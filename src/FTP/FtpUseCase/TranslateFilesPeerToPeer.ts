@@ -3,20 +3,27 @@ import { FtpTransferUpload } from "../FtpTransfer/FtpTransferUpload"
 
 export let TranslateFilesPeerToPeer = async ()=>{
 
-   let serverToConnect = {
-      host:"172.16.6.86",
-      user:"christian",
+   let serverToConnect_source = {
+      host:"localhost",
+      user:"cristian",
       password:"123456789"
 
    }
    
 
-   let FilesNumber= await  FtpTransferDownload("C:/Users/christian.alvarez/Desktop/dirAutomata/files_pdf",serverToConnect)
+    await  FtpTransferDownload("C:/Users/christian.alvarez/Desktop/dirAutomata/files_pdf",serverToConnect_source)
+    let serverToConnect_dest = {
+      /* host:"192.168.2.61",
+      user:"christian",
+      password:"123456789" */
+      host:"localhost",
+      user:"cristian2",
+      password:"123456789"
+   }
 
-   console.log(FilesNumber)
+   await  FtpTransferUpload("C:/Users/christian.alvarez/Desktop/dirAutomata",serverToConnect_dest)
 
 }
 
- TranslateFilesPeerToPeer()
  
 
