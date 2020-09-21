@@ -1,11 +1,9 @@
 import os
 import subprocess
 
-
 pathString="C:/Users/christian.alvarez/Desktop/dirAutomata/"
 
 #print(os.path.dirname(pathString))
-
 #print(os.listdir(pathString))
 
 def recordDir(url):
@@ -24,8 +22,4 @@ def recordDir(url):
                 #print(file)
 
 
-        
-
-
 recordDir(pathString)
-

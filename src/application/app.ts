@@ -1,21 +1,33 @@
 import Express,{Application,Request,Response} from "express"
-import fs from "fs"
-import path from "path"
+import {AutomataFTP} from "../AutomataFTP"
+import cors from "cors"
+
+let Automata= new AutomataFTP(5);
 
 const app:Application = Express()
 
 app.use(Express.json())
 
-app.get("/consumer",(req:Request,res:Response)=>{
+app.use(cors())
 
-    const jsonStorage = path.join(path.resolve(),path.dirname("/dist/storage/data.json"),"data.json")
-     
-     let content= fs.readFileSync(jsonStorage);
-     let datajson=JSON.parse(content.toString())
+app.get("/encender",(req:Request,res:Response)=>{
 
-     console.log(datajson)
+    Automata.start();
+    console.log("             ")
+    console.log("automata encendido!!!!")
+    console.log("             ")
 
-    res.json({ok:true})
+    res.json({mensaje:"encendido"})
+})
+
+app.get("/apagar",(req:Request,res:Response)=>{
+ 
+        Automata.stop()
+        console.log("             ")
+        console.log("automata apagado!!")
+    res.json({
+        mensaje:"apagado"
+    })
 })
 
 app.listen("3000",()=>console.log("servidor corriendo en puerto 3000"))

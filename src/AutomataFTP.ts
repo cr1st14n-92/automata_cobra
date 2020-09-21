@@ -5,9 +5,12 @@ export  class AutomataFTP{
 	private job:CronJob
 
 	constructor(minutes:number){
-         this.job= new CronJob(`0 */${minutes} * * * *`, async function() {
+         this.job= new CronJob(`*/${minutes} * * * * *`, async function() {
 						//const d = new Date();
-		let numberFile= await JobTranslatePdfCompresed()
+				 // await JobTranslatePdfCompresed()
+				 
+				 console.log("ejecutando...")
+				 console.log("   ")
 					})
 	}
 
@@ -20,16 +23,4 @@ export  class AutomataFTP{
 	}
 }
 
-async function ejecutar(){
-	while(true){
-		let numberFile= await JobTranslatePdfCompresed()
-		  
-		if(numberFile==0){
-			break;
-		}
-	
-	}
 
-
-}
- ejecutar()

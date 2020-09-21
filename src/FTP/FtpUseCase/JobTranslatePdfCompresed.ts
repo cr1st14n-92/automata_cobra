@@ -9,10 +9,12 @@ export const JobTranslatePdfCompresed = async ()=>{
     let pathResolve=  path.join(path.resolve())
 
     let serverToConnect_source = {
-        host:"172.16.6.86",
+        /* host:"172.16.6.86",
         user:"christian",
+        password:"123456789" */
+        host:"localhost",
+        user:"cristian",
         password:"123456789"
-  
      }
   
     let numberFile= await  FtpTransferDownload("C:/Users/christian.alvarez/Desktop/dirAutomata",serverToConnect_source)
@@ -30,10 +32,12 @@ export const JobTranslatePdfCompresed = async ()=>{
         console.log("Compression finalizada")
         console.log("Subiendo directorio..")
         let serverToConnect_dest = {
-            host:"192.168.2.61",
+            /* host:"192.168.2.61",
             user:"christian",
+            password:"123456789" */
+            host:"localhost",
+            user:"cristian2",
             password:"123456789"
-      
          }
           FtpTransferUpload("C:/Users/christian.alvarez/Desktop/dirAutomata",serverToConnect_dest)
 
@@ -43,4 +47,4 @@ export const JobTranslatePdfCompresed = async ()=>{
     return  new Promise((resolve,reject)=>{resolve(numberFile)}) 
 }
 
-JobTranslatePdfCompresed().then(data=>console.log("terminado"))
+//JobTranslatePdfCompresed().then(data=>console.log("terminado"))
